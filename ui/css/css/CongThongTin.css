@@ -1,0 +1,77 @@
+.main-content {
+    background-color: #fff;
+    margin: 10px 0 0 7px ;
+    border: 1px solid #e1e1e1;
+}
+
+.infor-basic {
+    background-color: #4eb0ff;
+    color: #fff;
+}
+
+.infor-basic-content {
+    padding: 10px 20px 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 7px;
+}
+
+.log-out .btn-logout {
+    background-color: #eb7b21;
+    color: #fff;
+    border: none;
+    padding: 7px 13px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.main-content .avatar {
+    width: 120px;
+    height: 150px;
+    float: none;
+    margin: 15px auto;
+    display: block;
+}
+
+.feature .feature-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.infor-student {
+    background-color: #fff;
+    margin: 10px 0 8px ;
+    border: 1px solid #e1e1e1;
+    border-left: 3px solid #4eb0ff;
+}
+
+    .infor-student .title {
+        font-size: 18px;
+        text-align: center;
+        color: #0c6fbe;
+    }
+
+    .infor-student .content {
+        margin: 0 35px 20px;
+    }
+
+.footer {
+    background-color: #0069d9;
+    color: #fff;
+}
+
+    .footer .footer-content {
+        padding: 13px 20px;
+    }
+
+.footer-bottom {
+    background-color: #45a0e9;
+    height: 50px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

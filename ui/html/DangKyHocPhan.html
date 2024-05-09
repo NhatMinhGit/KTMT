@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký học phần</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-3.6.4.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../css/css/base.css">
+    <link rel="stylesheet" href="../css/css/DangKyHocPhan.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <img src="../img/header-dkhp.png" alt="">
+        </div>
+    </header>
+    <div class="container">
+        <div class="main-content">
+            <div class="row">
+                <div class="col-md-3 infor-basic">
+                    <div class="infor-basic-content">
+                        <div class="title">
+                            <div class="hello">
+                                <span class="hello-subject">Xin chào!</span>
+                                <h4 class="hello-name bold">Lê Thị Thúy Kiều</h4>
+                            </div>
+                        </div>
+                        <div class="infor">
+                            <div class="row mt-1">
+                                <label class="col-xs-6">
+                                    <span lang="sv-mssv">Giới tính:</span>
+                                </label>
+                                <label class="col-xs-6 right">
+                                    <span class="bold">Nữ</span>
+                                </label>
+                            </div>
+                            <div class="row mt-1">
+                                <label class="col-xs-6">
+                                    <span lang="sv-mssv">MSSV:</span>
+                                </label>
+                                <label class="col-xs-6 right">
+                                    <span class="bold">21108651</span>
+                                </label>
+                            </div>
+                            <div class="row mt-1">
+                                <label class="col-xs-6">
+                                    <span lang="sv-mssv">Trạng thái:</span>
+                                </label>
+                                <label class="col-xs-6 right">
+                                    <span class="bold">Đang học</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="log-out">
+                            <button class="btn-logout bold w-100">Đăng xuất</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <img class="avatar" src="../img/avatar.jpg" alt="">
+                </div> 
+                <div class="col-md-7 d-flex flex-column justify-content-center">
+                    <div class="feature ">
+                        <ul class="feature-content">
+                            <li><a href="../html/CongThongTin.html">THÔNG TIN CÁ NHÂN</a></li>
+                            <li><a href="../html/DangKyHocPhan.html">ĐĂNG KÝ HỌC PHẦN</a></li>
+                            <li><a href="#">CHƯƠNG TRÌNH KHUNG</a></li>
+                        </ul>
+                    </div>
+                </div> 
+    
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="main">
+            <div class="title">
+                <p class="bold p-3">ĐĂNG KÝ HỌC PHẦN</p>
+            </div>
+            <div class="option d-flex justify-content-around align-items-center">
+                <div class="register">
+                    <label class="mr-5 text-dark bold" for="dangky">Đợt đăng ký</label>
+                    <select class="register-btn" name="dangky" id="dangky">
+                        <option value="HK3 (2024-2025)">HK3 (2024-2025)</option>
+                        <option value="HK2 (2024-2025)">HK2 (2024-2025)</option>
+                        <option value="HK1 (2024-2025)">HK1 (2024-2025)</option>
+                    </select>
+                </div>
+                <div class="option-hoc">
+                    <label class="option-hoc-item">
+                        <input type="radio" checked="checked" name="radio">
+                        <span class="checkmark"></span>
+                        <span class="pl-4 bold text-danger">HỌC MỚI</span>
+                    </label>
+                    <label class="option-hoc-item">
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                        <span class="pl-4 bold text-danger">HỌC LẠI</span>
+                    </label>
+                    <label class="option-hoc-item">
+                        <input type="radio" name="radio">
+                        <span class="checkmark"></span>
+                        <span class="pl-4 bold text-danger">HỌC CẢI THIỆN</span>
+                    </label>
+                </div>
+            </div>
+            <div class="subtitle">
+                <p class="bold">MÔN HỌC PHẦN ĐANG CHỜ ĐĂNG KÝ</p>
+            </div>
+            <div class="tb-course">
+                <table class="table table-bordered">
+                    <thead class="header-table">
+                        <tr>
+                            <th>STT</th>
+                            <th>Mã HP</th>
+                            <th>Tên môn học</th>
+                            <th>TC</th>
+                            <th>Bắt buộc</th>
+                            <th>Học phần: học trước (a), tiên quyết (b), song hành (c)</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="subtitle">
+                <p class="bold">LỚP HỌC PHẦN CHỜ ĐĂNG KÝ</p>
+            </div>
+            <div class="tb-class">
+                <table class="table table-bordered">
+                    <thead class="header-table">
+                        <tr>
+                            <th>STT</th>
+                            <th>Mã LHP</th>
+                            <th>Tên lớp học phần</th>
+                            <th>Lớp dự kiến</th>
+                            <th>Sĩ số tối đa</th>
+                            <th>Đã đăng ký</th>
+                            <th>Trạng thái</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="subtitle">
+                <p class="bold">CHI TIẾT LỚP HỌC PHẦN</p>
+            </div>
+            <div class="practice">
+                <label class="mr-5 text-dark bold" for="thuchanh">Nhóm thực hành</label>
+                <select class="register-btn" name="thuchanh" id="thuchanh">
+                    <option value="1">Nhóm 1</option>
+                    <option value="2">Nhóm 2</option>
+                    <option value="3">Nhóm 3</option>
+                </select>
+            </div>
+            <div class="tb-detail">
+                <table class="table table-bordered">
+                    <thead class="header-table">
+                        <tr>
+                            <th>STT</th>
+                            <th>Lịch học</th>
+                            <th>Nhóm TH</th>
+                            <th>Phòng</th>
+                            <th>Giảng viên</th>
+                            <th>Thời gian</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="btn-register">
+                <button class="btn-logout bold">Đăng ký môn học</button>
+            </div>
+            <div class="subtitle">
+                <p class="bold">LỚP HỌC PHẦN ĐÃ ĐĂNG KÝ TRONG HỌC KỲ NÀY</p>
+            </div>
+            <div class="tb-register">
+                <table class="table table-bordered">
+                    <thead class="header-table">
+                        <tr>
+                            <th>Thao tác</th>
+                            <th>STT</th>
+                            <th>Mã LHP</th>
+                            <th>Tên môn học</th>
+                            <th>Lớp dự kiến</th>
+                            <th>Số TC</th>
+                            <th>Nhóm TH</th>
+                            <th>Học phí</th>
+                            <th>Hạn nộp</th>
+                            <th>Thu</th>
+                            <th>Trạng thái ĐK</th>
+                            <th>Ngày ĐK</th>
+                            <th>Trạng thái LHP</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="footer">
+            <div class="row footer-content">
+                <div class="col-md-10">
+                    <p class="bold">TRƯỜNG ĐẠI HỌC CÔNG NGHIỆP TP.HỒ CHÍ MINH</p>
+                    <p>Địa chỉ: Số 12 Nguyễn Văn Bảo, Phường 4, Quận Gò Vấp, Thành phố Hồ Chí Minh</p>
+                    <p>Điện thoại: 0283.8940 390</p>
+                    <p>Fax: 0283 9940 954</p>
+                    <p>Email: dhcn@iuh.edu.vn</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Thống kê truy cập</p>
+                    <p>Lượt truy cập: 123456</p>
+                    <p>Đang online: 1</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Bản quyền 2018 - Trường Đại học Công Nghiệp TP.Hồ Chí Minh</p>
+        </div>
+    </div>
+</body>
+</html>

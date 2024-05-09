@@ -1,0 +1,274 @@
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.header {
+    width: 100%;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e7ecf0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1930;
+    height: 57px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.header .logo {
+    float: left;
+    margin-right: 14px;
+    margin-top: 4px;
+}
+
+.header .search-bar {
+    float: left;
+    width: 280px;
+    margin-top: 9px;
+}
+
+.search-bar form {
+    float: left;
+    width: 100%;
+    position: relative;
+}
+
+.search-bar form input {
+    width: 100%;
+    background-color: #fff;
+    height: 38px;
+    color: #b2b2b2;
+    font-size: 12px;
+    border: 1px solid #e6ecf0;
+    padding: 0 15px;
+    border-radius: 20px !important;
+}
+
+.search-bar form button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    width: 38px;
+    height: 100%;
+    border: 0;
+}
+
+.search-bar form button i {
+    color: #878787;
+    font-size: 16px;
+}
+
+.menu-top {
+    float: right;
+    width: auto;
+    padding-right: 13px;
+}
+
+.menu-top a {
+    text-decoration: none;
+}
+
+.menu-top a:hover {
+    text-decoration: none;
+}
+
+.menu-btn {
+    float: right;
+    display: none;
+}
+
+.menu-btn a {
+    font-size: 24px;
+    display: inline-block;
+    padding-top: 7px;
+    padding-left: 20px;
+}
+
+.menu-top ul li {
+    display: inline-block;
+    text-align: center;
+    padding: 18px 13px;
+    position: relative;
+}
+
+.menu-top ul li a {
+    color: #667580;
+    position: relative
+}
+
+.menu-top ul li a.flag_btn {
+    top: 7px;
+}
+
+.user-account {
+    float: right;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.user-info {
+    float: left;
+    width: 100%;
+    padding: 10px;
+    position: relative;
+}
+
+    .user-info img {
+        float: left;
+        margin-right: 10px;
+        -webkit-border-radius: 100px;
+        -moz-border-radius: 100px;
+        -ms-border-radius: 100px;
+        -o-border-radius: 100px;
+        border-radius: 100px;
+    }
+
+    .user-info a {
+        color: #667580;
+        font-size: 14px;
+        float: left;
+        margin-top: 7px;
+        margin-right: 5px;
+    }
+
+    .user-info a:hover {
+        text-decoration: none;
+    }
+
+    .user-info > i {
+        position: absolute;
+        top: 42%;
+        color: #667580;
+        font-size: 12px;
+    }
+
+.user-account-info {
+    width: 150px;
+    padding: 0;
+    margin: 0 !important;
+    box-shadow: none;
+    border: 1px solid #e7ecf0;
+}
+
+.us-links li {
+    border-bottom: 1px solid #e7ecf0;
+}
+
+    .us-links li:hover {
+        background: #e7ecf0;
+    }
+
+    .us-links li a {
+        color: #667580;
+        font-size: 13px;
+        padding: 10px 15px;
+        display: block;
+    }
+
+    .us-links li:hover a {
+        color: #003f7e;
+        text-decoration: none;
+    }
+    
+.main-content {
+        margin-top: 50px;
+        padding-top: 20px;
+}
+
+.main-dashboard .profile-ds-info {
+    height: 248px;
+    overflow: hidden;
+    background-color: #fff;
+    border: 1px solid #e7ecf0;
+    border-radius: 10px;
+}
+
+.main-dashboard .portlet {
+    margin: 10px;
+}
+
+.portlet .portlet-body {
+    margin: 20px 30px 0;
+}
+
+.portlet>.portlet-title {
+    border-bottom: 1px solid #eee;
+    padding: 0;
+    margin-bottom: 10px;
+    min-height: 41px;
+}
+
+.portlet-title .caption {
+    font-size: 20px;
+    font-weight: 600;
+    color: #716d6d;
+    margin: 10px 0 0 0;
+}
+
+.profile-userpic img {
+    width: 120px;
+    height: 120px;
+    float: none;
+    margin: 0 auto;
+    width: 50%;
+    height: 50%;
+    border-radius: 50%!important;
+    display: block;
+}
+
+.profile-ds-info .form-body {
+    padding: 15px;
+}
+
+
+form.form-horizontal {
+    min-height: 46px;
+}
+
+.form-horizontal .form-group {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.featured {
+    display: flex;
+    margin-left: -7.5px;
+    margin-right: -7.5px;
+    justify-content: center;
+    gap: 20px;
+    height: 150px;
+    margin-top: 17px;
+}
+
+.featured-item {
+    text-align: center;
+    width: 20%;
+    float: left;
+    position: relative;
+    min-height: 1px;
+    padding-left: 7.5px;
+    padding-right: 7.5px;
+    background-color: #fff;
+    border: 1px solid #e7ecf0;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .featured-item .icon {
+        width: 100%;
+        height: 50px;
+        margin-bottom: 10px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    .featured-item .title {
+        display: block;
+    }
