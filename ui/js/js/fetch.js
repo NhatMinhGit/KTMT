@@ -1,6 +1,11 @@
-var postApi = 'https://jsonplaceholder.typicode.com/posts';
+var postApi = 'http://localhost:8081/students';
 
-fetch(postApi)
+fetch(postApi,{
+    method: 'GET',
+    mode: 'cors',
+    headers: {
+        'Content-Type': 'application/json',
+    }})
     //case lấy postApi thành công
     .then(function(response) {
         //nhờ có fetch : response.json() nhận json postApi của promise chuyển đổi dữ liệu từ json -> js
@@ -11,8 +16,12 @@ fetch(postApi)
         console.log(posts);
         let htmls = posts.map(function(post) {
             return `<li>
-                <h2>${post.title}</h2>
-                <p>${post.body}</p>
+                <h2>${post.id}</h2>
+                <p>${post.name}</p>
+                <p>${post.sex}</p>
+                <p>${post.cccd}</p>
+                <p>${post.nameClazz}</p>
+                <p>${post.nameMajor}</p>
             </li>`;
         });
 
@@ -20,6 +29,6 @@ fetch(postApi)
         document.getElementById('postBlock').innerHTML = html;
     })
     //case lấy postApi thất bại
-    .catchn(function(err) {
+    .catch(function(err) {
         console.log(err);
     })
