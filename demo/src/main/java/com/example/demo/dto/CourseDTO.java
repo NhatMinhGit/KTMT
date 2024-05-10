@@ -13,7 +13,7 @@ public class CourseDTO {
     private String name;
     private int credits;
     private String type;
-    private List<CourseDTO> prerequisites;
+    private String prerequisites;
 
 
 }

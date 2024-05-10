@@ -54,7 +54,7 @@ public class Enrollment {
     @JoinColumn(name = "CourseID")
     private Course course;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id", nullable = false)
     private Instructor instuctor;
 }

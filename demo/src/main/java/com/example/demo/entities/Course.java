@@ -1,10 +1,16 @@
 package com.example.demo.entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
+@ToString
 @Table(name = "courses")
 public class Course {
     @Id
@@ -17,9 +23,9 @@ public class Course {
     @Column(name = "type", columnDefinition = "nvarchar(50)")
     private String type;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "courseID")
-    private List<Course> prerequisites;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "courseAFID")
+    private Course courseAfter;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "course_major",
@@ -27,13 +33,16 @@ public class Course {
             inverseJoinColumns = @JoinColumn(name = "majorID")
     )
     private List<Major> majors;
-    public Course() {
-    }
 
-    public Course(String courseID, String name, int credits, String type) {
+
+    public Course(String courseID, String name, int credits, String type, Course courseAfter) {
         this.courseID = courseID;
         this.name = name;
         this.credits = credits;
         this.type = type;
+        this.courseAfter = courseAfter;}
+
+    public Course() {
+
     }
 }
