@@ -21,6 +21,9 @@ public class EnrollmentP {
 
     @OneToMany(mappedBy = "enrollmentP",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Schedule> scheduleStudy;
+    @ManyToOne
+    @JoinColumn(name = "enrollmentID")
+    private Enrollment enrollment;
 
 
 

@@ -43,8 +43,7 @@ public class Enrollment {
     @JoinColumn(name = "scheduleID", unique = true, nullable = false)
     private Schedule exam;
 
-    @OneToMany
-    @JoinColumn(name = "enrollmentPID", nullable = true)
+    @OneToMany(mappedBy = "enrollment",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<EnrollmentP> enrollmentPs;
 
     @OneToMany(mappedBy = "enrollment",cascade = CascadeType.ALL, fetch = FetchType.EAGER)

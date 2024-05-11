@@ -51,7 +51,7 @@ public class CourseImpl implements CourseService {
             if(!perquisites.isEmpty()){
                 perquisites.forEach((perquisiteCourse)->{
                     if(perquisiteCourse!=null)
-                    courseDTO.setPrerequisites( courseDTO.getPrerequisites() + perquisiteCourse.getCourseID() + " "+ perquisiteCourse.getName() + " ");
+                    courseDTO.setPrerequisites(courseDTO.getPrerequisites() + perquisiteCourse.getCourseID() + " "+ perquisiteCourse.getName() + " ");
                 });
             }
             return courseDTO;

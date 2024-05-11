@@ -28,11 +28,11 @@ public class Result {
     @Column(name="practiceScore", nullable = false)
     private List<String> practiceScore;
 
-    @Column(name = "midtermScore",columnDefinition = "float",nullable = false)
+    @Column(name = "midtermScore",columnDefinition = "float")
     private double midtermScore;
-    @Column(name = "finalScore",columnDefinition = "float",nullable = false)
+    @Column(name = "finalScore",columnDefinition = "float")
     private double finalScore;
-    @Column(name = "overallScore",columnDefinition = "float",nullable = false)
+    @Column(name = "overallScore",columnDefinition = "float")
     private double overallScore;
 
 }

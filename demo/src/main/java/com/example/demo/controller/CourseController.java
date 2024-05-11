@@ -20,7 +20,6 @@ public class CourseController {
                                                           @RequestParam("year") int year){
 
         List<CourseDTO> courseDTOS = courseImpl.getAllCoursesOfMajorInSemester(studentID, semester, year);
-        courseDTOS.forEach(System.out::println);
         return courseDTOS;
     }
 }

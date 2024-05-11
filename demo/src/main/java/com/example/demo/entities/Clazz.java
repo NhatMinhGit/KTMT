@@ -19,4 +19,7 @@ public class Clazz {
     @OneToOne
     @JoinColumn(name = "id")
     private Instructor instructor;
+    @ManyToOne
+    @JoinColumn(name = "majorID")
+    private Major major;
 }
