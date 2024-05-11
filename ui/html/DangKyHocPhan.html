@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="../css/css/base.css">
     <link rel="stylesheet" href="../css/css/DangKyHocPhan.css">
 </head>
+
 <body>
     <header class="header">
         <div class="container">
@@ -24,7 +26,7 @@
                         <div class="title">
                             <div class="hello">
                                 <span class="hello-subject">Xin chào!</span>
-                                <h4 class="hello-name bold">Lê Thị Thúy Kiều</h4>
+                                <h4 id="sv-hoten" class="hello-name bold"></h4>
                             </div>
                         </div>
                         <div class="infor">
@@ -33,7 +35,7 @@
                                     <span lang="sv-mssv">Giới tính:</span>
                                 </label>
                                 <label class="col-xs-6 right">
-                                    <span class="bold">Nữ</span>
+                                    <span id="sv-gioitinh" class="bold"></span>
                                 </label>
                             </div>
                             <div class="row mt-1">
@@ -41,7 +43,7 @@
                                     <span lang="sv-mssv">MSSV:</span>
                                 </label>
                                 <label class="col-xs-6 right">
-                                    <span class="bold">21108651</span>
+                                    <span id="sv-mssv" class="bold"></span>
                                 </label>
                             </div>
                             <div class="row mt-1">
@@ -49,7 +51,7 @@
                                     <span lang="sv-mssv">Trạng thái:</span>
                                 </label>
                                 <label class="col-xs-6 right">
-                                    <span class="bold">Đang học</span>
+                                    <span id="sv-status" class="bold"></span>
                                 </label>
                             </div>
                         </div>
@@ -59,8 +61,8 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <img class="avatar" src="../img/avatar.jpg" alt="">
-                </div> 
+                    <img id="avatar" class="avatar" src="" alt="">
+                </div>
                 <div class="col-md-7 d-flex flex-column justify-content-center">
                     <div class="feature ">
                         <ul class="feature-content">
@@ -69,8 +71,8 @@
                             <li><a href="#">CHƯƠNG TRÌNH KHUNG</a></li>
                         </ul>
                     </div>
-                </div> 
-    
+                </div>
+
             </div>
         </div>
     </div>
@@ -82,7 +84,7 @@
             <div class="option d-flex justify-content-around align-items-center">
                 <div class="register">
                     <label class="mr-5 text-dark bold" for="dangky">Đợt đăng ký</label>
-                    <select class="register-btn" name="dangky" id="dangky">
+                    <select id="semester" class="register-btn" name="dangky" id="dangky">
                         <option value="HK3 (2024-2025)">HK3 (2024-2025)</option>
                         <option value="HK2 (2024-2025)">HK2 (2024-2025)</option>
                         <option value="HK1 (2024-2025)">HK1 (2024-2025)</option>
@@ -110,7 +112,7 @@
                 <p class="bold">MÔN HỌC PHẦN ĐANG CHỜ ĐĂNG KÝ</p>
             </div>
             <div class="tb-course">
-                <table class="table table-bordered">
+                <table id="tb-course" class="table table-bordered">
                     <thead class="header-table">
                         <tr>
                             <th>STT</th>
@@ -121,6 +123,7 @@
                             <th>Học phần: học trước (a), tiên quyết (b), song hành (c)</th>
                         </tr>
                     </thead>
+                    <tbody></tbody>
                 </table>
             </div>
             <div class="subtitle">
@@ -191,6 +194,7 @@
                             <th>Trạng thái LHP</th>
                         </tr>
                     </thead>
+                    <tbody></tbody>
                 </table>
             </div>
         </div>
@@ -217,5 +221,8 @@
             <p>Bản quyền 2018 - Trường Đại học Công Nghiệp TP.Hồ Chí Minh</p>
         </div>
     </div>
+
+    <script src="../js/js/DangKyHocPhan.js"></script>
 </body>
+
 </html>

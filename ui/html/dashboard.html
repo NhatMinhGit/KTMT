@@ -40,10 +40,9 @@
                 </div>
                 <div class="user-account dropdown">
                     <div class="user-info" data-toggle="dropdown">
-                        <img class="user-account-img"
-                            src="../img/avatar.jpg"
-                            style="width: 30px;height: 30px;border-radius: 50% !important;object-fit: cover;" />
-                        <a class="user-account-name" href="#" title="">L&#234; Thị Th&#250;y Kiều </a>
+                        <img id="user-account-avatar" class="user-account-img"
+                            src="" style="width: 30px;height: 30px;border-radius: 50% !important;object-fit: cover;" />
+                        <a id="user-account-name" class="user-account-name" href="#" title=""></a>
                         <i class="fa fa-caret-down user-account-name-caret-down" aria-hidden="true"></i>
                     </div>
                     <div class="user-account-info dropdown-menu pull-right">
@@ -96,7 +95,7 @@
                         <div class="row">
                             <div class="col-sm-3">
                                 <div class="profile-userpic">
-                                    <img src="../img/avatar.jpg"
+                                    <img id="image-profile" src=""
                                         class="img-responsive" style="object-fit: cover;" />
                                 </div>
                                 <div class="text-center">
@@ -108,51 +107,51 @@
                                 <div class="row mb-2">
                                     <label class="col-xs-6">
                                         <span lang="sv-mssv">MSSV</span>
-                                        : <span class="bold">21108651</span>
+                                        : <span id="sv-mssv" class="bold"></span>
                                     </label>
                                     <label class="col-xs-6">
                                         <span lang="sv-lophoc">Lớp học</span>
-                                        : <span class="bold">DHKTPM17C</span>
+                                        : <span id="sv-lophoc" class="bold"></span>
                                     </label>
                                 </div>
                                 <div class="row mb-2">
                                     <label class="col-xs-6">
                                         <span lang="sv-hoten">Họ tên</span>
-                                        : <span class="bold">L&#234; Thị Th&#250;y Kiều</span>
+                                        : <span id="sv-hoten" class="bold"></span>
                                     </label>
                                     <label class="col-xs-6">
                                         <span lang="sv-khoahoc">Khóa học</span>
-                                        : <span class="bold">2021 - 2022</span>
+                                        : <span id="sv-khoahoc" class="bold"></span>
                                     </label>
                                 </div>
                                 <div class="row mb-2">
                                     <label class="col-xs-6">
                                         <span lang="sv-gioitinh">Giới tính</span>
-                                        : <span class="bold">Nữ</span>
+                                        : <span id="sv-gioitinh" class="bold"></span>
                                     </label>
                                     <label class="col-xs-6">
-                                        <span lang="sv-hedaotao">Bậc đ&#224;o tạo</span>
-                                        : <span class="bold">Đại học</span>
+                                        <span lang="sv-quoctich">Quốc tịch</span>
+                                        : <span id="sv-quoctich" class="bold"></span>
                                     </label>
                                 </div>
                                 <div class="row mb-2">
                                     <label class="col-xs-6">
                                         <span lang="sv-ngaysinh">Ngày sinh</span>
-                                        : <span class="bold">13/03/2003</span>
+                                        : <span id="sv-ngaysinh" class="bold"></span>
                                     </label>
                                     <label class="col-xs-6">
                                         <span lang="sv-loaihinhdt">Loại hình đào tạo</span>
-                                        : <span class="bold">Ch&#237;nh quy</span>
+                                        : <span id="sv-loaihinhdt" class="bold"></span>
                                     </label>
                                 </div>
                                 <div class="row mb-3">
                                     <label class="col-xs-6">
                                         <span lang="sv-noisinh">Nơi sinh</span>
-                                        : <span class="bold">Tỉnh T&#226;y Ninh</span>
+                                        : <span id="sv-noisinh" class="bold"></span>
                                     </label>
                                     <label class="col-xs-6">
                                         <span lang="sv-nganh">Ngành</span>
-                                        : <span class="bold">Kỹ thuật phần mềm </span>
+                                        : <span id="sv-nganh" class="bold"></span>
                                     </label>
                                 </div>
                             </div>
@@ -182,7 +181,7 @@
                     </a>
                 </div>
                 <div class="featured-item">
-                    <a target=_blank href="../html/CongThongTin.html" title="Đăng k&#253; học phần" langid="menusinhvien-15-title">
+                    <a target="_blank" href="../html/CongThongTin.html" title="Đăng k&#253; học phần" langid="menusinhvien-15-title" onclick="redirectToCongThongTin()">
                         <div class="box-df auto-height">
                             <div class="icon">
                                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAYCAYAAADpnJ2CAAADU0lEQVRIia3WbYhWRRQH8N88rlEaBS4lViYWtZDmhzIq6AVJC0wUpFxCyiaK2gRfSkrcKMosrKygFzXIa4EUfjDNisoy2FqhsEhdIi1IV0uxIAV7Mavpw9yN62Ou+1QH7ofLnDn/OXP+538mWJY0aDdjKfqjLUVLG9lca8C3Fd+iwHN4DEtC4ftQuPH/BLwaX+FVbMRQ3IW5GIL1eDkUukNhwn8BvBxdeAffoAWTsKvisydFrRiOz7E2FLaFwthGAC9AJzpwAKPLLLcdLUiKtqdoIkZhN9aFwiehcGlvgOfgPXyKE8sMLyn/+2Qp2pKiK3ExAjaEQkcojOzxCZal4Wgrv12YgzcbADmqhcJVeKpMZgkWB8vSAQzEQ3igr0B9AawAz8aTSDVMxirciddwdqOgvQANDYWVmIe1mNCEd8uvBW/ha7wiU3/PvwRqxhOySOzC2BRt4nDSnC5ndwPGymx7ESc3ADQgFJ7HD3ILxRQNRXMo9OsBvAfbyxP1lxv8VJlE12MfFuH4XoCaQmEBfiqzmp2iQSlaXroswM5QuK+GGRiGD3GoEmcJTpJZOwO/YP4/gLWX++ahPUUDUvR0ndv7sirNruEM3CJr5SFHMnVRmfl8tONX3IppsjA8jIVoStEjdYe5NxQOyoS8PUXNoW5aPIj7cVDWyvqTNuFxzCr/F2NOin6uA2or/QZiYYrm/r1WAl6D23AdTsCjmIn9co1fqAM+Df2ws9qHoTCtBDpFLsncFO0vW2NFitbU8DHelqWIXKtZGITX5dm3RyZQj32HnRWgSaHQjeX4AINT1Jai/ZWYq0NhUw1f4HcMxsRK0B9xk9wuHViJHbi24jMuFLZhtTwthqWoNUV7K4cZX8b4E101RHnG7cUabC2vuJrNFFkYvsQbMqPXy4KxGyNTNDFF3RWgMaGwWdbl38rDTK0nTQuelRt/C+7ABofbKKzAcZiaoo3VxVAYLdfvQnwkP0O6etab6oJtxThcJDO0s9w0E5+VPptxft0+oTACz2CMPNIuS1HnEX7HeERdIVP/PPn6pstaW7Uz5TfOBPkpMj1F644W8Fhvmg6MwHicVQZcJdd8iCzyO+SMJ6fo3N7AOHaG9TZFvrZ9+EPW3LtT9FJfA/wFQAIJ7FVYOrIAAAAASUVORK5CYII=" alt="">
@@ -195,7 +194,7 @@
         </div>
 
     </div>
-    <script src="../js/js/main.js"></script>
+    <script src="../js/js/dashboard.js"></script>
 </body>
 
 </html>

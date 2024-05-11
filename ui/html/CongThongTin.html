@@ -25,7 +25,7 @@
                         <div class="title">
                             <div class="hello">
                                 <span class="hello-subject">Xin chào!</span>
-                                <h4 class="hello-name bold">Lê Thị Thúy Kiều</h4>
+                                <h4 id="sv-hoten" class="hello-name bold">Lê Thị Thúy Kiều</h4>
                             </div>
                         </div>
                         <div class="infor">
@@ -34,7 +34,7 @@
                                     <span lang="sv-mssv">Giới tính:</span>
                                 </label>
                                 <label class="col-xs-6 right">
-                                    <span class="bold">Nữ</span>
+                                    <span id="sv-gioitinh" class="bold"></span>
                                 </label>
                             </div>
                             <div class="row mt-1">
@@ -42,7 +42,7 @@
                                     <span lang="sv-mssv">MSSV:</span>
                                 </label>
                                 <label class="col-xs-6 right">
-                                    <span class="bold">21108651</span>
+                                    <span id="sv-mssv" class="bold"></span>
                                 </label>
                             </div>
                             <div class="row mt-1">
@@ -50,7 +50,7 @@
                                     <span lang="sv-mssv">Trạng thái:</span>
                                 </label>
                                 <label class="col-xs-6 right">
-                                    <span class="bold">Đang học</span>
+                                    <span id="sv-status" class="bold"></span>
                                 </label>
                             </div>
                         </div>
@@ -60,13 +60,13 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <img class="avatar" src="../img/avatar.jpg" alt="">
+                    <img id="avatar" class="avatar" src="" alt="">
                 </div> 
                 <div class="col-md-7 d-flex flex-column justify-content-center">
                     <div class="feature ">
                         <ul class="feature-content">
                             <li><a href="../html/CongThongTin.html">THÔNG TIN CÁ NHÂN</a></li>
-                            <li><a href="../html/DangKyHocPhan.html">ĐĂNG KÝ HỌC PHẦN</a></li>
+                            <li><a target="_blank" class="dkhp" href="../html/DangKyHocPhan.html" onclick="redirectToDKHP()">ĐĂNG KÝ HỌC PHẦN</a></li>
                             <li><a href="#">CHƯƠNG TRÌNH KHUNG</a></li>
                         </ul>
                     </div>
@@ -83,15 +83,15 @@
             <div class="content">
                 <div class="row mt-1">
                     <label class="col-xs-6">
-                        <span lang="sv-khoa">Khóa:</span>
-                        <span class="bold">2021-2022</span>
+                        <span lang="sv-khoahoc">Khóa:</span>
+                        <span id="sv-khoahọc" class="bold"></span>
                     </label>
                     <label class="col-xs-6">
                         <span lang="sv-lop">Lớp:</span>
                         <span class="bold">Đại học Kỹ thuật phần mềm 17C - 7480103</span>
                     </label>
                 </div>
-                <div class="row mt-1">
+                <!-- <div class="row mt-1">
                     <label class="col-xs-6">
                         <span lang="sv-bdt">Bậc đào tạo:</span>
                         <span class="bold">Đại học</span>
@@ -100,25 +100,25 @@
                         <span lang="sv-lhdt">Loại hình đào tạo:</span>
                         <span class="bold">Chính quy</span>
                     </label>
-                </div>
+                </div> -->
                 <div class="row mt-1">
                     <label class="col-xs-6">
                         <span lang="sv-nganh">Ngành:</span>
-                        <span class="bold">Kỹ thuật phần mềm</span>
+                        <span id="sv-nganh" class="bold">Kỹ thuật phần mềm</span>
                     </label>
                     <label class="col-xs-6">
                         <span lang="sv-chuyennganh">Chuyên ngành:</span>
-                        <span class="bold">Kỹ thuật phần mềm - 7480103</span>
+                        <span id="sv-chuyennganh" class="bold">Kỹ thuật phần mềm - 7480103</span>
                     </label>
                 </div>
                 <div class="row mt-1">
                     <label class="col-xs-6">
                         <span lang="sv-khoa">Khoa:</span>
-                        <span class="bold">Công nghệ thông tin</span>
+                        <span id="sv-khoa" class="bold">Công nghệ thông tin</span>
                     </label>
                     <label class="col-xs-6">
                         <span lang="sv-coso">Cơ sở:</span>
-                        <span class="bold">Cơ sở 1 (Thành phố Hồ Chí Minh)</span>
+                        <span id="sv-coso" class="bold">Cơ sở 1 (Thành phố Hồ Chí Minh)</span>
                     </label>
                 </div>
             </div>
@@ -145,5 +145,6 @@
             <p>Bản quyền 2018 - Trường Đại học Công Nghiệp TP.Hồ Chí Minh</p>
         </div>
     </div>
+    <script src="../js/js/CongThongTin.js"></script>
 </body>
 </html>
