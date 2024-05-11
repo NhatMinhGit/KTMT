@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch theo tuần</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-3.6.4.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../css/css/base.css">
+    <link rel="stylesheet" href="../css/css/LichTheoTuan.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="dashboard.html" title="">
+                        <img src="https://media.iuh.edu.vn/Media/2_sviuh/Images/iuh7313e0f8-4-e.png"
+                            style="max-height: 40px !important;">
+                    </a>
+                </div>
+                <div class="search-bar">
+                    <form action="/sinh-vien-tin-tuc-thong-bao-search.html">
+                        <input type="text" id="k" name="k" langid="header-search-placeholder" placeholder="Tìm kiếm..."
+                            required>
+                        <button type="submit">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                </div>
+                <div class="menu-btn">
+                    <a href="#" title="">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </div>
+                <div class="user-account dropdown">
+                    <div class="user-info" data-toggle="dropdown">
+                        <img class="user-account-img"
+                            src="../img/avatar.jpg"
+                            style="width: 30px;height: 30px;border-radius: 50% !important;object-fit: cover;" />
+                        <a class="user-account-name" href="#" title="">L&#234; Thị Th&#250;y Kiều </a>
+                        <i class="fa fa-caret-down user-account-name-caret-down" aria-hidden="true"></i>
+                    </div>
+                    <div class="user-account-info dropdown-menu pull-right">
+                        <ul class="us-links">
+                            <li>
+                                <a href="/thong-tin-sinh-vien.html" title="">Th&#244;ng tin c&#225; nh&#226;n</a>
+                            </li>
+                            <li>
+                                <a title="">Đổi mật khẩu</a>
+                            </li>
+                            <li>
+                                <a href="/SinhVien/Logout" title="">Đăng xuất</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="menu-top">
+                    <ul>
+                        <li>
+                            <a href="dashboard.html" title="">
+                                <span>
+                                    <i class="fa fa-home" aria-hidden="true"></i>
+                                </span>
+                                Trang chủ
+                            </a>
+                        </li>
+                        <li>
+                            <a id="spanBell" href="#" title="">
+                                <div id="tinTuc" lang="tin-tuc">
+                                    <i class="fa fa-bell-o" aria-hidden="true"></i>
+                                    &nbsp &nbspTin tức
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="main-content">
+        <div class="container" id="full-resize-table">
+            <div class="main-section-content" id="content">
+                <div class="box-df">
+                    <div class="portlet">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <span class="caption-subject bold" lang="lichtheotuan-pagetitle">Lịch học, lịch thi theo tuần</span>
+                            </div>
+                            <div class="actions">
+                                <div class="mt-radio-inline" style="float: left;padding: 5px 20px 0px 0px;">
+                                    <label class="mt-radio" style="padding-left: 25px;margin-bottom: 0px;">
+                                        <input checked="checked" id="rdoLoaiLich" name="rdoLoaiLich" type="radio" value="0"/>
+                                        <label lang="lichtheotuan-tatca">Tất cả</label>
+                                        <span></span>
+                                    </label>
+                                    <label class="mt-radio" style="padding-left: 25px;margin-bottom: 0px;">
+                                        <input id="rdoLoaiLich" name="rdoLoaiLich" type="radio" value="1"/>
+                                        <label lang="lichtheotuan-lichhoc">Lịch học</label>
+                                        <span></span>
+                                    </label>
+                                    <label class="mt-radio" style="padding-left: 25px;margin-bottom: 0px;">
+                                        <input id="rdoLoaiLich" name="rdoLoaiLich" type="radio" value="2"/>
+                                        <label lang="lichtheotuan-lichthi">Lịch thi</label>
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <input id="dateNgayXemLich" name="dateNgayXemLich" type="text" value="09/05/2024"/>
+                                
+                                <a href="javascript:;" class="btn btn-action" id="btn_HienTai" lang="lichtheotuan-hientai-button">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    Hiện tại
+    
+                                </a>
+                                
+                                <a href="javascript:;" class="btn btn-action" id="btn_TroVe" lang="lichtheotuan-back-button">
+                                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                                    Trở về
+    
+                                </a>
+                                <a href="javascript:;" class="btn btn-action" id="btn_Tiep" lang="lichtheotuan-next-button">
+                                    Tiếp
+                                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </a>
+                                
+                            </div>
+                        </div>
+                        <div id="viewLichTheoTuan"></div>
+                        <div style="margin-top: 7px;" id="viewDsCamThi"></div>
+                    </div>
+                </div>
+            </div>
+        </div>   
+    </div>
+</body>
+</html>
