@@ -10,13 +10,17 @@ import lombok.*;
 @Setter
 @ToString
 @Table(name = "inforStudents")
+
 public class InforStudent {
+    @Id
+    @Column(name = "id")
+    private String id;
 
     @Column(name = "scholarship",columnDefinition = "nvarchar(50)",nullable = false)
     private String scholarship;
 
-    @Id
+    @MapsId
     @OneToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "id",referencedColumnName = "id")
     private Student student;
 }

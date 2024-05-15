@@ -1,16 +1,16 @@
 package com.example.demo.entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
 @Getter
 @Setter
-@ToString
+
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "courses")
 public class Course {
     @Id
@@ -35,14 +35,15 @@ public class Course {
     private List<Major> majors;
 
 
-    public Course(String courseID, String name, int credits, String type, Course courseAfter) {
-        this.courseID = courseID;
-        this.name = name;
-        this.credits = credits;
-        this.type = type;
-        this.courseAfter = courseAfter;}
+    @Override
+    public String toString() {
+        return "Course{" +
+                "courseID='" + courseID + '\'' +
+                ", name='" + name + '\'' +
+                ", credits=" + credits +
+                ", type='" + type + '\'' +
+                ", courseAfter=" + courseAfter +
 
-    public Course() {
-
+                '}';
     }
 }

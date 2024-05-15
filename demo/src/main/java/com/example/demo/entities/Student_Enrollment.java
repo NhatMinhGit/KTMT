@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
@@ -40,6 +39,13 @@ public class Student_Enrollment {
     @ManyToOne
     @JoinColumn(name = "enrollmentID")
     private Enrollment enrollment;
+
+    public Student_Enrollment() {
+
+    }
+    public void createResult(Result rs){
+        this.result = rs;
+    }
 
     @Override
     public boolean equals(Object o) {

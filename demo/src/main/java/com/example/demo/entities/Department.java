@@ -1,9 +1,7 @@
 package com.example.demo.entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -11,7 +9,8 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "departments")
 public class Department {
     @Id
@@ -32,15 +31,7 @@ public class Department {
     @JoinColumn(name = "deanID", unique = true, nullable = true)
     private Instructor dean;
 
-    public Department() {
-    }
 
-    public Department(String deptID, String deptName, LocalDate date, String description) {
-        this.deptID = deptID;
-        this.deptName = deptName;
-        this.date = date;
-        this.description = description;
-    }
 
 
 }

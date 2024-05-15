@@ -1,17 +1,15 @@
 package com.example.demo.entities;
 
 import jakarta.persistence.*;
-import lombok.Generated;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
-@ToString
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "majors")
 public class Major {
     @Id
@@ -28,12 +26,15 @@ public class Major {
 
     @ManyToMany(mappedBy = "majors",fetch = FetchType.EAGER)
     private List<Course> courses;
-    public Major() {
-    }
 
-    public Major(String majorID, String name, String description) {
-        this.majorID = majorID;
-        this.name = name;
-        this.description = description;
+    @Override
+    public String toString() {
+        return "Major{" +
+                "majorID='" + majorID + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+
+
+                '}';
     }
 }

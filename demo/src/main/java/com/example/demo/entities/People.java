@@ -13,7 +13,7 @@ import lombok.*;
 @ToString
 public class People {
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     protected String id;
     protected String name;
     protected int age;
