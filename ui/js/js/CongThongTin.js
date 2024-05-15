@@ -4,12 +4,6 @@ var studentAPI = 'http://localhost:8081/students';
 var studentID = localStorage.getItem("studentID");
 document.getElementById('sv-mssv').textContent = studentID;
 
-function redirectToDKHP() {
-    var studentID = document.getElementById('sv-mssv').textContent;
-    localStorage.setItem('studentID', studentID);
-    window.location.href = 'DangKyHocPhan.html';
-}
-
 fetch(studentAPI + '/' + studentID)
     .then(function(response) {
         return response.json();

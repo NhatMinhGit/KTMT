@@ -43,7 +43,6 @@ public class CourseImpl implements CourseService {
         Major major = majorRepository.findById(majorID).orElse(null);
         assert major != null;
         List<Course> courses = major.getCourses();
-        courses.addAll(majorRepository.findById("CT").orElse(null).getCourses());
         courses.forEach(e->{
             System.out.println(e.getCourseID());
         });

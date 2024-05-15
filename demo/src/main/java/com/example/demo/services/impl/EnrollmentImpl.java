@@ -60,4 +60,12 @@ public class EnrollmentImpl implements EnrollmentService {
         return null;
     }
 
+    @Override
+    public EnrollmentDTO getAllEnrollmentById(String enrollmentID) {
+        Enrollment enrollment = enrollmentRepository.findEnrollmentByEnrollmentID(enrollmentID);
+        assert enrollment != null;
+        EnrollmentDTO enrollmentDTO = modelMapper.map(enrollment, EnrollmentDTO.class);
+        return enrollmentDTO;
+    }
+
 }
