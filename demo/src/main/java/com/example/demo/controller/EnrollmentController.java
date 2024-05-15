@@ -23,4 +23,9 @@ public class EnrollmentController {
     public List<EnrollmentDTO> getAllEnrollmentByStudentID(@RequestParam("studentID") String studentID){
         return enrollmentService.getAllEnrollmentByStudentID(studentID);
     }
+
+    @GetMapping("/dangkyhocphan/lophocphan/chitietlophocphan")
+    public EnrollmentDTO getAllEnrollmentById(@RequestParam("enrollmentID") String enrollmentID){
+        return enrollmentService.getAllEnrollmentById(enrollmentID);
+    }
 }

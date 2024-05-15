@@ -8,4 +8,5 @@ import java.util.List;
 public interface EnrollmentService {
 List<EnrollmentDTO> getAllEnrollmentByCourseID(String courseID);
 List<EnrollmentDTO> getAllEnrollmentByStudentID(String studentID);
+    EnrollmentDTO getAllEnrollmentById(String enrollmentID);
 }

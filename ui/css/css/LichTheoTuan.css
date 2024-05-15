@@ -325,3 +325,58 @@ i.fa {
 .mt-radio-inline {
     font-size: 16px;
 }
+
+.fl-table thead {
+    background: #f3f7f9;
+    border-bottom: 2px solid #cad6d8;
+    color: #1da1f2;
+    white-space: nowrap;
+}
+
+    .fl-table thead th {
+        width: 15%;
+        vertical-align: middle !important;
+        text-align: center;
+    }
+
+        .fl-table thead th:first-child {
+            width: 5%;
+        }
+
+.fl-table tbody tr td:first-child {
+    background: #ffffce;
+    vertical-align: middle;
+}
+
+.fl-table tbody tr td {
+    border-bottom: 1px solid #d9e0eb;
+}
+
+.fl-table .content {
+    background-color: #fdff9a;
+    border: 1px solid #edaf00;
+    color: #003763;
+    padding: 5px;
+    margin-bottom: 5px;
+    font-size: 13px;
+    border-radius: 4px !important;
+    position: relative
+}
+
+    .fl-table .content.color-lichhoc {
+        background-color: #e7ecf0;
+        border: 1px solid #c9d0db;
+    }
+
+    .fl-table .content:last-child {
+        margin-bottom: 0;
+    }
+
+.fl-table td, .fl-table th {
+    text-align: center;
+    padding: 8px;
+}
+
+.fl-table tbody {
+    background: url("../img/icons/transparent-pattern-square-4.png");
+}

@@ -1,6 +1,10 @@
-var studentAPI = 'http://localhost:8081/students/1';
+var studentAPI = 'http://localhost:8081/students';
 
-fetch(studentAPI, {
+// Lấy thông tin sinh viên từ Local Storage
+var studentID = localStorage.getItem("studentID");
+document.getElementById('sv-mssv').textContent = studentID;
+
+fetch(studentAPI + '/' + studentID, {
     method: 'GET',
     mode: 'cors',
     headers: {
@@ -24,18 +28,3 @@ fetch(studentAPI, {
         document.getElementById('sv-noisinh').textContent = 'Tỉnh ' + student.contact.address;
         document.getElementById('sv-nganh').textContent = student.nameMajor;
 })
-
-// Lấy thông tin sinh viên từ Local Storage
-var studentID = localStorage.getItem("studentID");
-document.getElementById('sv-mssv').textContent = studentID;
-
-function redirectToCongThongTin() {
-    // Lấy id sinh viên
-    var studentID = document.getElementById('sv-mssv').textContent;
-
-    // Lưu vào Local Storage
-    localStorage.setItem('studentID', studentID);
-
-    // Chuyển hướng sang trang đăng ký học phần
-    window.location.href = 'CongThongTin.html';
-}

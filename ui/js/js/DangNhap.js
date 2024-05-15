@@ -2,17 +2,17 @@ var accountNormalAPI = 'http://localhost:8081/accountNormal';
 
 
 function login(){
+    console.log("login");
     // event.preventDefault();
     var uname = document.getElementById("UserName").value;
     var pw = document.getElementById("Password").value; 
     
     if(uname == "" || pw == ""){
-        // alert("Please fill in all fields");
         return;
     } else {
-        fetch(accountNormalAPI + '/' + '1')
+        fetch(accountNormalAPI + '/' + uname)
         .then(function(response){
-        return response.json();
+            return response.json();
         })
         .then(function(account){
             console.log(account);

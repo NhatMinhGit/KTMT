@@ -112,7 +112,7 @@
                 <p class="bold">MÔN HỌC PHẦN ĐANG CHỜ ĐĂNG KÝ</p>
             </div>
             <div class="tb-course">
-                <table id="tb-course" class="table table-bordered">
+                <table id="tb-course" class="my-table table table-bordered">
                     <thead class="header-table">
                         <tr>
                             <th>STT</th>
@@ -130,7 +130,7 @@
                 <p class="bold">LỚP HỌC PHẦN CHỜ ĐĂNG KÝ</p>
             </div>
             <div class="tb-class">
-                <table class="table table-bordered">
+                <table id="tb-class" class="my-table table table-bordered">
                     <thead class="header-table">
                         <tr>
                             <th>STT</th>
@@ -142,6 +142,7 @@
                             <th>Trạng thái</th>
                         </tr>
                     </thead>
+                    <tbody></tbody>
                 </table>
             </div>
             <div class="subtitle">
@@ -156,7 +157,7 @@
                 </select>
             </div>
             <div class="tb-detail">
-                <table class="table table-bordered">
+                <table id="tb-detail" class="my-table table table-bordered">
                     <thead class="header-table">
                         <tr>
                             <th>STT</th>
@@ -167,16 +168,17 @@
                             <th>Thời gian</th>
                         </tr>
                     </thead>
+                    <tbody></tbody>
                 </table>
             </div>
             <div class="btn-register">
-                <button class="btn-logout bold">Đăng ký môn học</button>
+                <button onclick="register()" class="btn-logout bold">Đăng ký môn học</button>
             </div>
             <div class="subtitle">
                 <p class="bold">LỚP HỌC PHẦN ĐÃ ĐĂNG KÝ TRONG HỌC KỲ NÀY</p>
             </div>
             <div class="tb-register">
-                <table class="table table-bordered">
+                <table id="tb-register" class="my-table table table-bordered">
                     <thead class="header-table">
                         <tr>
                             <th>Thao tác</th>
@@ -189,7 +191,6 @@
                             <th>Học phí</th>
                             <th>Hạn nộp</th>
                             <th>Thu</th>
-                            <th>Trạng thái ĐK</th>
                             <th>Ngày ĐK</th>
                             <th>Trạng thái LHP</th>
                         </tr>
