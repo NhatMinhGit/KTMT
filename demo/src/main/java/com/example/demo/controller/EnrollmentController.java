@@ -20,7 +20,7 @@ public class EnrollmentController {
         return enrollmentService.getAllEnrollmentByCourseID(courseID);
     }
     @GetMapping("/dangkyhocphan/lophocphan/sinhvien")
-    public List<EnrollmentDTO> getAllEnrollmentByStudentID(@RequestParam("studentID") String studentID){
-        return enrollmentService.getAllEnrollmentByStudentID(studentID);
+    public List<EnrollmentDTO> getAllEnrollmentByStudentID(@RequestParam("studentID") String studentID, @RequestParam("semester") int semester, @RequestParam("year") int year){
+        return enrollmentService.getAllEnrollmentByStudentID(studentID, semester, year);
     }
 }

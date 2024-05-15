@@ -7,5 +7,5 @@ import java.util.List;
 @Service
 public interface EnrollmentService {
 List<EnrollmentDTO> getAllEnrollmentByCourseID(String courseID);
-List<EnrollmentDTO> getAllEnrollmentByStudentID(String studentID);
+List<EnrollmentDTO> getAllEnrollmentByStudentID(String studentID, int semester, int year);
 }
