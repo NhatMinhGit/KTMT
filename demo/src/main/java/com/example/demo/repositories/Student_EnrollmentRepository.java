@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface Student_EnrollmentRepository extends JpaRepository<Student_Enrollment, InforStudent> {
-    List<Student_Enrollment> findStudent_EnrollmentsByStudentStudent(Student student);
+    List<Student_Enrollment> findStudent_EnrollmentsByStudentStudentAndEnrollment_SemesterAndEnrollment_Year(Student student, int semester, int year);
 }

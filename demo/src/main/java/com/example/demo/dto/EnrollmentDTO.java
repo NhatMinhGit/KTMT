@@ -1,12 +1,9 @@
 package com.example.demo.dto;
 
-import com.example.demo.entities.EnrollmentP;
 import com.example.demo.entities.EnrollmentStatus;
 import com.example.demo.entities.Schedule;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.SecondaryTable;
 import lombok.*;
+import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -16,6 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EnrollmentDTO {
+
     private String enrollmentID;
     private String name;
     private int year;
@@ -31,6 +29,15 @@ public class EnrollmentDTO {
     private List<Schedule> scheduleStudy;
     private List<EnrollmentPDTO> enrollmentPs;
     private String nameInstuctor;
+    private int fee;
+    private String codePractice;
+    private LocalDate paymentDeadline;
+    public void genPaymentDeadline(){
+        this.paymentDeadline = this.dateApplyEnd.plusDays(15);
+    }
+    private LocalDate dateApply;
+    private String paymentStatus;
+
 
 
 }

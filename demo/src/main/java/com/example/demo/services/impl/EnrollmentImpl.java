@@ -2,6 +2,7 @@ package com.example.demo.services.impl;
 
 import com.example.demo.dto.EnrollmentDTO;
 import com.example.demo.entities.Enrollment;
+import com.example.demo.model.Caculator;
 import com.example.demo.repositories.EnrollmentRepository;
 import com.example.demo.repositories.StudentRepository;
 import com.example.demo.repositories.Student_EnrollmentRepository;
@@ -39,14 +40,20 @@ public class EnrollmentImpl implements EnrollmentService {
     }
 
     @Override
-    public List<EnrollmentDTO> getAllEnrollmentByStudentID(String studentID) {
+    public List<EnrollmentDTO> getAllEnrollmentByStudentID(String studentID, int semester, int year) {
         if (!studentRepository.existsById(studentID)){
             return null;
         }
-        if(!student_enrollmentRepository.findStudent_EnrollmentsByStudentStudent(studentRepository.findById(studentID).orElse(null)).isEmpty()){
-            return student_enrollmentRepository.findStudent_EnrollmentsByStudentStudent(studentRepository.findById(studentID).orElse(null)).stream().map((element)->{
+        if(!student_enrollmentRepository.findStudent_EnrollmentsByStudentStudentAndEnrollment_SemesterAndEnrollment_Year(studentRepository.findById(studentID).orElse(null),semester,year).isEmpty()){
+            return student_enrollmentRepository.findStudent_EnrollmentsByStudentStudentAndEnrollment_SemesterAndEnrollment_Year(studentRepository.findById(studentID).orElse(null),semester,year).stream().map((element)->{
                 Enrollment enrollment = enrollmentRepository.findEnrollmentByEnrollmentID(element.getEnrollment().getEnrollmentID());
+
                 EnrollmentDTO enrollmentDTO = modelMapper.map(enrollment, EnrollmentDTO.class);
+                enrollmentDTO.setCodePractice(element.getCodePractive());
+                enrollmentDTO.genPaymentDeadline();
+                enrollmentDTO.setFee(Caculator.caculatorFee(enrollment.getCourse().getCredits()));
+                enrollmentDTO.setPaymentStatus(element.getPaymentStatus());
+                enrollmentDTO.setDateApply(element.getDateApply());
                 return enrollmentDTO;
             }).collect(Collectors.toList());
         }
