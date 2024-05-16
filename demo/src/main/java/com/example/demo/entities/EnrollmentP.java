@@ -19,11 +19,14 @@ public class EnrollmentP {
     private String room;
     private int quantity;
 
-    @OneToMany(mappedBy = "enrollmentP",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Schedule> scheduleStudy;
+    @OneToOne(mappedBy = "enrollmentP",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Schedule scheduleStudy;
     @ManyToOne
     @JoinColumn(name = "enrollmentID")
     private Enrollment enrollment;
+    @OneToOne
+    @JoinColumn(name = "id")
+    private Instructor instructor;
 
 
 

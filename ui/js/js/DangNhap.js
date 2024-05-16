@@ -1,6 +1,6 @@
 var accountNormalAPI = 'http://localhost:8081/accountNormal';
 
-
+console.log("1")
 function login(){
     console.log("login");
     // event.preventDefault();
@@ -20,7 +20,7 @@ function login(){
                 alert("Tài khoản không tồn tại")
             } else if(uname == account.username && pw == account.password){
                 localStorage.setItem('studentID',uname);
-                window.location.href="dashboard.html"
+                window.location.href="../html/dashboard.html"
             } else if(uname != account.username || pw != account.password){
                 alert("Tên hoặc mật khẩu không chính xác")
             }

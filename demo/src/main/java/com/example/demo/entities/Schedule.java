@@ -20,7 +20,7 @@ public class Schedule {
     @JoinColumn(name = "enrollmentID")
     private Enrollment enrollment;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "enrollmentPID")
     private EnrollmentP enrollmentP;
 

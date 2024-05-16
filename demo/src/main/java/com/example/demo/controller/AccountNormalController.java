@@ -14,10 +14,6 @@ public class AccountNormalController {
     @Autowired
     private AccountNormalService accountNormalService;
 
-    @GetMapping("/accountNormal")
-    public List<AccountNormalDTO> getAllAccountNormal(){
-        return accountNormalService.getAllAccountNormal();
-    }
 
     @GetMapping("/accountNormal/{accountID}")
     public AccountNormalDTO getAccountNormalById(@PathVariable String accountID){
