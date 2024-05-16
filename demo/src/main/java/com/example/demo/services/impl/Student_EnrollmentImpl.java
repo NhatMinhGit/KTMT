@@ -138,7 +138,9 @@ public class Student_EnrollmentImpl implements Student_EnrollmentService {
             EnrollmentP enrollmentP = enrollmentPRepository.findById(element.getCodePractive()).orElse(null);
                 enrollment.getScheduleStudy().forEach((element2)->{
                     assert enrollmentP != null;
-
+                    if (enrollmentP.getScheduleStudy()==null){
+                        return;
+                    }
                     if(!scheduleImpl.checkSchedule(enrollmentP.getScheduleStudy(),element2)){
                         schedule.set(enrollmentP.getScheduleStudy());
                         System.out.println("3");
@@ -148,6 +150,10 @@ public class Student_EnrollmentImpl implements Student_EnrollmentService {
             EnrollmentP enrollmentPDky = enrollmentPRepository.findById(enrollmentPID).orElse(null);
             assert enrollmentPDky != null;
             assert enrollmentP != null;
+            if (enrollmentPDky.getScheduleStudy()==null){
+                return;
+            }
+
             if(!scheduleImpl.checkSchedule(enrollmentPDky.getScheduleStudy(),enrollmentP.getScheduleStudy())){
                 schedule.set(enrollmentP.getScheduleStudy());
                 System.out.println("4");

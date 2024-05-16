@@ -1,5 +1,6 @@
 package com.example.demo.dto;
 
+import com.example.demo.entities.Instructor;
 import com.example.demo.entities.Schedule;
 import lombok.*;
 
@@ -14,6 +15,7 @@ public class EnrollmentPDTO {
     private String name;
     private String room;
     private int quantity;
-    private List<Schedule> scheduleStudy;
+    private Schedule scheduleStudy;
+    private String nameInstructor;
 
 }

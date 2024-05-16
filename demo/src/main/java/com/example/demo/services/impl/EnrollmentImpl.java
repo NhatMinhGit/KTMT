@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 @Service
@@ -63,8 +64,16 @@ public class EnrollmentImpl implements EnrollmentService {
     @Override
     public EnrollmentDTO getAllEnrollmentById(String enrollmentID) {
         Enrollment enrollment = enrollmentRepository.findEnrollmentByEnrollmentID(enrollmentID);
-        assert enrollment != null;
+        List<String> nameInstutor = enrollment.getEnrollmentPs().stream().map((element)->{
+            return element.getInstructor().getName();
+        }).toList();
+
         EnrollmentDTO enrollmentDTO = modelMapper.map(enrollment, EnrollmentDTO.class);
+        AtomicInteger flag = new AtomicInteger();
+        enrollmentDTO.getEnrollmentPs().forEach((element)->{
+            element.setNameInstructor(nameInstutor.get(flag.get()));
+            flag.getAndIncrement();
+        });
         return enrollmentDTO;
     }
 
