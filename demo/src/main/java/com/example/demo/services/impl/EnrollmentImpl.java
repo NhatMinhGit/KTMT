@@ -50,6 +50,8 @@ public class EnrollmentImpl implements EnrollmentService {
                 Enrollment enrollment = enrollmentRepository.findEnrollmentByEnrollmentID(element.getEnrollment().getEnrollmentID());
 
                 EnrollmentDTO enrollmentDTO = modelMapper.map(enrollment, EnrollmentDTO.class);
+                enrollmentDTO.setCredit(enrollment.getCourse().getCredits());
+                enrollmentDTO.setNameCourse(enrollment.getCourse().getName());
                 enrollmentDTO.setCodePractice(element.getCodePractive());
                 enrollmentDTO.genPaymentDeadline();
                 enrollmentDTO.setFee(Caculator.caculatorFee(enrollment.getCourse().getCredits()));

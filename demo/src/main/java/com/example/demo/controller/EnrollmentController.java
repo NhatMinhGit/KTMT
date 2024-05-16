@@ -35,6 +35,5 @@ public class EnrollmentController {
     @GetMapping("/dangkyhocphan/lophocphan/chitietlophocphan")
     public EnrollmentDTO getAllEnrollmentById(@RequestParam("enrollmentID") String enrollmentID){
         return enrollmentService.getAllEnrollmentById(enrollmentID);
-
     }
 }
