@@ -35,7 +35,7 @@ fetch(studentAPI + '/' + studentID)
         }
 })
 
-function dangKyHocPhan() {
+function loadListOfCourse() {
     studentID = document.getElementById('sv-mssv').textContent;
     year = new Date().getFullYear();
     semester = document.getElementById('semester').value.slice(2, 3);
@@ -78,7 +78,7 @@ function dangKyHocPhan() {
     });
 }
 
-dangKyHocPhan();
+loadListOfCourse();
 
 function choiceCourse(courseID, courseName) {
     fetch(lopHPAPI + '?courseID=' + courseID)
@@ -153,7 +153,8 @@ function choiceClass(enrollmentID) {
 
 var choiceSemester = document.getElementById("semester");
 choiceSemester.addEventListener("change", function() {
-    dangKyHocPhan();
+    loadListOfCourse();
+    loadListOfRegisteredClass();
 });
 
 document.getElementById('thuchanh').addEventListener('change', function() {
@@ -207,7 +208,7 @@ function register() {
     newRow.insertCell(2).textContent = enrollmentID;
     newRow.insertCell(3).textContent = activeCourse.cells[2].textContent;
     newRow.insertCell(4).textContent = activeClass.cells[3].textContent;
-    newRow.insertCell(5).textContent = activeCourse.cells[2].textContent;
+    newRow.insertCell(5).textContent = activeCourse.cells[3].textContent;
     newRow.insertCell(6).textContent = activeDetail.cells[2].textContent;
     newRow.insertCell(7).textContent = ''; // Học phí
     newRow.insertCell(8).textContent = ''; // Hạn nộp
@@ -217,29 +218,37 @@ function register() {
 
 }
 
-fetch(registerAPI + '?studentID=' + studentID)
+function loadListOfRegisteredClass() {
+    studentID = document.getElementById('sv-mssv').textContent;
+    year = new Date().getFullYear();
+    semester = document.getElementById('semester').value.slice(2, 3);
+    console.log(registerAPI + '?studentID=' + studentID + '&semester=' + semester + '&year=' + year);
+    fetch(registerAPI + '?studentID=' + studentID + '&semester=' + semester + '&year=' + year)
     .then(function(response) {
         return response.json();
     })
-    .then(function(classes) {
+    .then(function(registers) {
         var table = document.querySelector('#tb-register');
         var tbody = table.querySelector('tbody');
 
         tbody.innerHTML = '';
 
-        classes.forEach((lop, index) => {
+        registers.forEach((register, index) => {
             const row = tbody.insertRow();
-            row.insertCell(0).textContent = ""; 
-            row.insertCell(1).textContent = index + 1; 
-            row.insertCell(2).textContent = lop.enrollmentID;
-            row.insertCell(3).textContent = lop.name;
-            row.insertCell(4).textContent = lop.name;
-            row.insertCell(5).textContent = lop.quantity;
-            row.insertCell(6).textContent = "";
-            row.insertCell(7).textContent = "";
-            row.insertCell(8).textContent = "";
-            row.insertCell(9).textContent = "";
-            row.insertCell(10).textContent = "";
-            row.insertCell(11).textContent = "";
+            row.insertCell(0).textContent = "";
+            row.insertCell(1).textContent = index + 1;
+            row.insertCell(2).textContent = register.enrollmentID;
+            row.insertCell(3).textContent = "";
+            row.insertCell(4).textContent = register.name;
+            row.insertCell(5).textContent = register.nameClass;
+            row.insertCell(6).textContent = register.nameCourse;
+            row.insertCell(7).textContent = register.fee;
+            row.insertCell(8).textContent = register.paymentDeadline;
+            row.insertCell(9).textContent = register.paymentStatus;
+            row.insertCell(10).textContent = register.dateApply;
+            row.insertCell(11).textContent = register.status;
         });
     })
+}
+
+loadListOfRegisteredClass();
