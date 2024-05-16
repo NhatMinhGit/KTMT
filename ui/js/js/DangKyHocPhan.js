@@ -2,11 +2,14 @@ var dkhpAPI = 'http://localhost:8081/dangkyhocphan';
 var studentAPI = 'http://localhost:8081/students';
 var lopHPAPI = 'http://localhost:8081/dangkyhocphan/lophocphan';
 var detailAPI = 'http://localhost:8081/dangkyhocphan/lophocphan/chitietlophocphan';
-var registerAPI = 'http://localhost:8081/dangkyhocphan/lophocphan/sinhvien';
+var lopHPDaDangKyAPI = 'http://localhost:8081/dangkyhocphan/lophocphan/sinhvien';
+var registerAPI = 'http://localhost:8081/dangkyhocphan/lophocphan/sinhvien/dangky';
 
+// lấy thông tin sinh viên từ localStorage
 var studentID = localStorage.getItem("studentID");
 document.getElementById('sv-mssv').textContent = studentID;
 
+// load thông tin sinh viên
 fetch(studentAPI + '/' + studentID)
     .then(function(response) {
         return response.json();
@@ -35,12 +38,13 @@ fetch(studentAPI + '/' + studentID)
         }
 })
 
+// load danh sách môn học
 function loadListOfCourse() {
     studentID = document.getElementById('sv-mssv').textContent;
     year = new Date().getFullYear();
     semester = document.getElementById('semester').value.slice(2, 3);
     console.log(studentID, year, semester);
-    
+    console.log(dkhpAPI + '?studentID=' + studentID + '&semester=' + semester + '&year=' + year);
     fetch(dkhpAPI + '?studentID=' + studentID + '&semester=' + semester + '&year=' + year)
     .then(function (res) {
         return res.json();
@@ -77,9 +81,9 @@ function loadListOfCourse() {
         console.error('Error fetching data:', error);
     });
 }
-
 loadListOfCourse();
 
+// chọn môn học
 function choiceCourse(courseID, courseName) {
     fetch(lopHPAPI + '?courseID=' + courseID)
     .then(function(response) {
@@ -114,6 +118,15 @@ function choiceCourse(courseID, courseName) {
     })
 }
 
+// lấy danh sách môn học theo học kỳ
+var choiceSemester = document.getElementById("semester");
+choiceSemester.addEventListener("change", function() {
+    loadListOfCourse();
+    loadListOfRegisteredClass();
+});
+
+var thucHanh = [];
+// chọn lớp học phần
 function choiceClass(enrollmentID) {
     fetch(detailAPI + '?enrollmentID=' + enrollmentID)
     .then(function(response) {
@@ -134,60 +147,64 @@ function choiceClass(enrollmentID) {
             row.insertCell(3).textContent = detail.roomName;
             row.insertCell(4).textContent = detail.nameInstuctor;
             row.insertCell(5).textContent = detail.dateApplyStart + ' - ' + detail.dateApplyEnd;
+            row.classList.add('active');
         }
 
         for (var i = 0; i < detail.enrollmentPs.length; i++) {
+            // thucHanh.push(detail.enrollmentPs[i].enrollmentPID);
+            thucHanh.push();
             const row = tbody.insertRow();
             row.insertCell(0).textContent = i + 1 + detail.scheduleStudy.length;
-            detail.enrollmentPs[i].scheduleStudy.forEach((schedule, index) => {
-                row.insertCell(index + 1).textContent = 'TH - Thứ ' + schedule.dayOfWeek + ' (T' + schedule.classesStart + ' - T' + schedule.classesEnd + ')';
-            });
-
+            if (detail.enrollmentPs[i].scheduleStudy !== null) {
+                detail.enrollmentPs[i].scheduleStudy.forEach((schedule, index) => {
+                    row.insertCell(index + 1).textContent = 'TH - Thứ ' + schedule.dayOfWeek + ' (T' + schedule.classesStart + ' - T' + schedule.classesEnd + ')';
+                });
+            } else {
+                row.insertCell(1).textContent = '';
+            }
             row.insertCell(2).textContent = detail.enrollmentPs[i].name;
-            row.insertCell(3).textContent = detail.enrollmentPs[i].roomName;
+            row.insertCell(3).textContent = detail.enrollmentPs[i].room;
             row.insertCell(4).textContent = detail.enrollmentPs[i].nameInstuctor;
             row.insertCell(5).textContent = detail.dateApplyStart + ' - ' + detail.dateApplyEnd;
         }
     })
 }
 
-var choiceSemester = document.getElementById("semester");
-choiceSemester.addEventListener("change", function() {
-    loadListOfCourse();
-    loadListOfRegisteredClass();
-});
-
+var nhomTH = "";
+// chọn nhóm thực hành
 document.getElementById('thuchanh').addEventListener('change', function() {
     var choiceNhom = this.value;
     console.log(choiceNhom);
-    markActiveRow(choiceNhom);
-});
 
-function markActiveRow(choiceNhom) {
     var tableRows = document.querySelectorAll('#tb-detail tbody tr');
     tableRows.forEach(function(row) {
         var nhomTHValue = row.cells[2].textContent.trim().slice(5);
-        console.log(nhomTHValue);
-        if (nhomTHValue === choiceNhom) {
+        if (nhomTHValue === '' || nhomTHValue === choiceNhom) {
             row.classList.add('active');
+            thucHanh.forEach(function(item) {
+                if (row.cells[2].textContent.slice(5) === item) {
+                    nhomTH = row.cells[2].textContent;
+                }
+            });
         } else {
             row.classList.remove('active');
         }
     });
-}
+});
 
-
+// xử lý đăng ký học phần
 function register() {
-    var activeClass = document.querySelector('#tb-class tr.active');
     var activeCourse = document.querySelector('#tb-course tr.active');
+    var activeClass = document.querySelector('#tb-class tr.active');
     var activeDetail = document.querySelector('#tb-detail tr.active');
-    if (!activeClass) {
-        alert('Vui lòng chọn lớp học phần');
+    
+    if (!activeCourse) {
+        alert('Vui lòng chọn môn học');
         return;
     }
 
-    if (!activeCourse) {
-        alert('Vui lòng chọn môn học');
+    if (!activeClass) {
+        alert('Vui lòng chọn lớp học phần');
         return;
     }
 
@@ -196,34 +213,60 @@ function register() {
         return; 
     }
 
-    var enrollmentID = activeClass.cells[1].textContent;
-    console.log(enrollmentID);
+    thucHanh.forEach(function(item) {
+        console.log(item);
 
-    var tableRegister = document.querySelector('#tb-register tbody');
-    var newRow = tableRegister.insertRow();
+        var codePractive = "Không";
+        if (activeDetail.cells[2].textContent !== null ) {
+            if (activeDetail.cells[2].textContent.slice(5) === item) {
+            codePractive = activeDetail.cells[2].textContent;
 
-    // Thêm các ô cho hàng mới
-    newRow.insertCell(0).textContent = '';
-    newRow.insertCell(1).textContent = '';
-    newRow.insertCell(2).textContent = enrollmentID;
-    newRow.insertCell(3).textContent = activeCourse.cells[2].textContent;
-    newRow.insertCell(4).textContent = activeClass.cells[3].textContent;
-    newRow.insertCell(5).textContent = activeCourse.cells[3].textContent;
-    newRow.insertCell(6).textContent = activeDetail.cells[2].textContent;
-    newRow.insertCell(7).textContent = ''; // Học phí
-    newRow.insertCell(8).textContent = ''; // Hạn nộp
-    newRow.insertCell(9).textContent = ''; // Thu
-    newRow.insertCell(10).textContent = ''; // Ngày ĐK
-    newRow.insertCell(11).textContent = ''; // Trạng thái LHP
+            }
+        }
+    });
 
+
+    if(new Date().getMonth() < 10) {
+        var dateApply = new Date().getFullYear() + '-0' + new Date().getMonth() + '-' + new Date().getDate();
+    }
+    else if (new Date().getDate() < 10) {
+        var dateApply = new Date().getFullYear() + '-' + new Date().getMonth() + '-0' + new Date().getDate();
+    } else {
+        var dateApply = new Date().getFullYear() + '-' + new Date().getMonth() + '-' + new Date().getDate();
+    }
+
+    var enrollment = {
+        "studentID": studentID,
+        "dateApply": dateApply,
+        "codePractive": codePractive,
+        "enrollmentID": activeClass.cells[1].textContent,
+    }
+
+    console.log(enrollment);
+
+    fetch(registerAPI, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(enrollment)
+    })
+        .then((res) => {
+            return res.json();
+        })
+        .then((response) => {
+            console.log(response);
+            loadListOfRegisteredClass();
+        })
 }
 
+// load danh sách lớp học phần đã đăng ký
 function loadListOfRegisteredClass() {
     studentID = document.getElementById('sv-mssv').textContent;
     year = new Date().getFullYear();
     semester = document.getElementById('semester').value.slice(2, 3);
-    console.log(registerAPI + '?studentID=' + studentID + '&semester=' + semester + '&year=' + year);
-    fetch(registerAPI + '?studentID=' + studentID + '&semester=' + semester + '&year=' + year)
+    console.log(lopHPDaDangKyAPI + '?studentID=' + studentID + '&semester=' + semester + '&year=' + year);
+    fetch(lopHPDaDangKyAPI + '?studentID=' + studentID + '&semester=' + semester + '&year=' + year)
     .then(function(response) {
         return response.json();
     })

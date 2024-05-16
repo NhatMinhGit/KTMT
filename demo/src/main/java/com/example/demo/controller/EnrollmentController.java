@@ -25,14 +25,6 @@ public class EnrollmentController {
     public List<EnrollmentDTO> getAllEnrollmentByStudentID(@RequestParam("studentID") String studentID, @RequestParam("semester") int semester, @RequestParam("year") int year){
         return enrollmentService.getAllEnrollmentByStudentID(studentID, semester, year);
     }
-<<<<<<< HEAD
-=======
-
-    @PostMapping("/dangkyhocphan/lophocphan/sinhvien/dangky")
-    public boolean registerEnrollment(@RequestBody Student_EnrollmentDTO studentEnrollmentDTO){
-        return  student_enrollmentImpl.registerEnrollment(studentEnrollmentDTO);
-    }
->>>>>>> 8c5496de18220de8c2123a1c320c6c38233280c9
 
     @PostMapping("/dangkyhocphan/lophocphan/sinhvien/dangky")
     public String registerEnrollment(@RequestBody Student_EnrollmentDTO studentEnrollmentDTO) {
@@ -42,9 +34,5 @@ public class EnrollmentController {
     @GetMapping("/dangkyhocphan/lophocphan/chitietlophocphan")
     public EnrollmentDTO getAllEnrollmentById(@RequestParam("enrollmentID") String enrollmentID){
         return enrollmentService.getAllEnrollmentById(enrollmentID);
-<<<<<<< HEAD
-
-=======
->>>>>>> 8c5496de18220de8c2123a1c320c6c38233280c9
     }
 }

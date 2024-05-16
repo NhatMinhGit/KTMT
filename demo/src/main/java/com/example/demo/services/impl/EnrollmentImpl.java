@@ -64,7 +64,10 @@ public class EnrollmentImpl implements EnrollmentService {
     public EnrollmentDTO getAllEnrollmentById(String enrollmentID) {
         Enrollment enrollment = enrollmentRepository.findEnrollmentByEnrollmentID(enrollmentID);
         assert enrollment != null;
+        String nameInstructor = enrollment.getInstuctor().getName();
+
         EnrollmentDTO enrollmentDTO = modelMapper.map(enrollment, EnrollmentDTO.class);
+        enrollmentDTO.setNameInstuctor(nameInstructor);
         return enrollmentDTO;
     }
 
