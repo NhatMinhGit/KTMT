@@ -24,7 +24,8 @@ public class EnrollmentDTO {
     private LocalDate dateStart;
     private LocalDate dateApplyStart;
     private LocalDate dateApplyEnd;
-
+    private int credit;
+    private String nameCourse;
     private EnrollmentStatus status;
     private List<Schedule> scheduleStudy;
     private List<EnrollmentPDTO> enrollmentPs;
