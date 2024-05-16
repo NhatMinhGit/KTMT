@@ -43,7 +43,6 @@ function loadListOfCourse() {
     studentID = document.getElementById('sv-mssv').textContent;
     year = new Date().getFullYear();
     semester = document.getElementById('semester').value.slice(2, 3);
-    console.log(studentID, year, semester);
     console.log(dkhpAPI + '?studentID=' + studentID + '&semester=' + semester + '&year=' + year);
     fetch(dkhpAPI + '?studentID=' + studentID + '&semester=' + semester + '&year=' + year)
     .then(function (res) {
@@ -133,7 +132,6 @@ function choiceClass(enrollmentID) {
         return response.json();
     })
     .then(function(detail) {
-        console.log(detail);
         var table = document.querySelector('#tb-detail');
         var tbody = table.querySelector('tbody');
 
@@ -151,20 +149,13 @@ function choiceClass(enrollmentID) {
         }
 
         for (var i = 0; i < detail.enrollmentPs.length; i++) {
-            // thucHanh.push(detail.enrollmentPs[i].enrollmentPID);
-            thucHanh.push();
+            thucHanh.push(detail.enrollmentPs[i]);
             const row = tbody.insertRow();
             row.insertCell(0).textContent = i + 1 + detail.scheduleStudy.length;
-            if (detail.enrollmentPs[i].scheduleStudy !== null) {
-                detail.enrollmentPs[i].scheduleStudy.forEach((schedule, index) => {
-                    row.insertCell(index + 1).textContent = 'TH - Thứ ' + schedule.dayOfWeek + ' (T' + schedule.classesStart + ' - T' + schedule.classesEnd + ')';
-                });
-            } else {
-                row.insertCell(1).textContent = '';
-            }
+            row.insertCell(1).textContent = 'TH - Thứ ' + detail.enrollmentPs[i].scheduleStudy.dayOfWeek + ' (T' + detail.enrollmentPs[i].scheduleStudy.classesStart + ' - T' + detail.enrollmentPs[i].scheduleStudy.classesEnd + ')';
             row.insertCell(2).textContent = detail.enrollmentPs[i].name;
             row.insertCell(3).textContent = detail.enrollmentPs[i].room;
-            row.insertCell(4).textContent = detail.enrollmentPs[i].nameInstuctor;
+            row.insertCell(4).textContent = detail.enrollmentPs[i].nameInstructor;
             row.insertCell(5).textContent = detail.dateApplyStart + ' - ' + detail.dateApplyEnd;
         }
     })
@@ -182,8 +173,8 @@ document.getElementById('thuchanh').addEventListener('change', function() {
         if (nhomTHValue === '' || nhomTHValue === choiceNhom) {
             row.classList.add('active');
             thucHanh.forEach(function(item) {
-                if (row.cells[2].textContent.slice(5) === item) {
-                    nhomTH = row.cells[2].textContent;
+                if (choiceNhom === item.name.slice(5)) {
+                    nhomTH = item.enrollmentPID;
                 }
             });
         } else {
@@ -197,6 +188,7 @@ function register() {
     var activeCourse = document.querySelector('#tb-course tr.active');
     var activeClass = document.querySelector('#tb-class tr.active');
     var activeDetail = document.querySelector('#tb-detail tr.active');
+    var tableDetail = document.querySelector('#tb-detail'); 
     
     if (!activeCourse) {
         alert('Vui lòng chọn môn học');
@@ -208,23 +200,20 @@ function register() {
         return;
     }
 
-    if (!activeDetail) {
-        alert('Vui lòng chọn nhóm thực hành');
-        return; 
-    }
-
-    thucHanh.forEach(function(item) {
-        console.log(item);
-
-        var codePractive = "Không";
-        if (activeDetail.cells[2].textContent !== null ) {
-            if (activeDetail.cells[2].textContent.slice(5) === item) {
-            codePractive = activeDetail.cells[2].textContent;
-
+    var activeRowCount = 0;
+    if (tableDetail.rows.length > 1) {
+        for (var i = 0; i < tableDetail.rows.length; i++) {
+            if (tableDetail.rows[i].classList.contains("active")) {
+                activeRowCount++;
             }
         }
-    });
+        if (activeRowCount === 1) {
+            alert('Vui lòng chọn nhóm thực hành');
+            return;
+        }
+    }
 
+    var codePractive = nhomTH;
 
     if(new Date().getMonth() < 10) {
         var dateApply = new Date().getFullYear() + '-0' + new Date().getMonth() + '-' + new Date().getDate();
@@ -252,10 +241,10 @@ function register() {
         body: JSON.stringify(enrollment)
     })
         .then((res) => {
-            return res.json();
+            return res.text();
         })
         .then((response) => {
-            console.log(response);
+            // window.location.reload();
             loadListOfRegisteredClass();
         })
 }
@@ -275,16 +264,20 @@ function loadListOfRegisteredClass() {
         var tbody = table.querySelector('tbody');
 
         tbody.innerHTML = '';
-
+        
         registers.forEach((register, index) => {
             const row = tbody.insertRow();
             row.insertCell(0).textContent = "";
             row.insertCell(1).textContent = index + 1;
             row.insertCell(2).textContent = register.enrollmentID;
-            row.insertCell(3).textContent = "";
+            row.insertCell(3).textContent = register.nameCourse;
             row.insertCell(4).textContent = register.name;
-            row.insertCell(5).textContent = register.nameClass;
-            row.insertCell(6).textContent = register.nameCourse;
+            row.insertCell(5).textContent = register.credit;
+            if (register.codePractice === null) {
+                row.insertCell(6).textContent = "";
+            } else {
+                row.insertCell(6).textContent = register.codePractice.slice(4);
+            }
             row.insertCell(7).textContent = register.fee;
             row.insertCell(8).textContent = register.paymentDeadline;
             row.insertCell(9).textContent = register.paymentStatus;
