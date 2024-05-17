@@ -66,11 +66,16 @@ public class EnrollmentImpl implements EnrollmentService {
     @Override
     public EnrollmentDTO getAllEnrollmentById(String enrollmentID) {
         Enrollment enrollment = enrollmentRepository.findEnrollmentByEnrollmentID(enrollmentID);
+        assert enrollment != null;
+        String nameInstructor = enrollment.getInstuctor().getName();
+
+        EnrollmentDTO enrollmentDTO = modelMapper.map(enrollment, EnrollmentDTO.class);
+        enrollmentDTO.setNameInstuctor(nameInstructor);
+
         List<String> nameInstutor = enrollment.getEnrollmentPs().stream().map((element)->{
             return element.getInstructor().getName();
         }).toList();
 
-        EnrollmentDTO enrollmentDTO = modelMapper.map(enrollment, EnrollmentDTO.class);
         AtomicInteger flag = new AtomicInteger();
         enrollmentDTO.getEnrollmentPs().forEach((element)->{
             element.setNameInstructor(nameInstutor.get(flag.get()));

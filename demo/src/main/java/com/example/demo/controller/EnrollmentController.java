@@ -26,7 +26,6 @@ public class EnrollmentController {
         return enrollmentService.getAllEnrollmentByStudentID(studentID, semester, year);
     }
 
-
     @PostMapping("/dangkyhocphan/lophocphan/sinhvien/dangky")
     public String registerEnrollment(@RequestBody Student_EnrollmentDTO studentEnrollmentDTO) {
         return student_enrollmentImpl.registerEnrollment(studentEnrollmentDTO);
