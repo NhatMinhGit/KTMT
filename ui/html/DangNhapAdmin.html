@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập</title>
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-3.6.4.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../css/css/base.css">
+    <link rel="stylesheet" href="../css/css/DangNhap.css">
+</head>
+
+<body>
+    <header class="header" style="background: #ffffff;">
+        <div class="container">
+            <div class="logo-login-main text-center">
+                <a href="../html/DangNhapAdmin.html"><img src="../img/logo-sv-dangnhap.png"></a>
+            </div>
+        </div>
+        <!-- <div style="clear:both;"></div> -->
+    </header>
+    <div class="bg-form authfy-login" style="height: 630px">
+        <div class="form-wrap">
+            <div class="authfy-panel panel-login active">
+                <form action="" class="form-login" id="form-login" method="post">
+                    <div class="form-login">
+                        <div class="text-center">
+                            <img src="../img/congthongtinsinhvien.png" style="max-width: 100%;max-height: 95px;" />
+                        </div>
+                        <h4 lang="loginnews-pagetitle bold">ĐĂNG NHẬP HỆ THỐNG</h4>
+                        <div class="group">
+                            <input autocomplete="new-password" class="input" id="UserName"
+                                lang="langnews_user_placeholder" name="UserName" placeholder="Nhập mã cán bộ"
+                                required="required" type="text" value="" />
+                            <input autocomplete="new-password" class="input" id="Password"
+                                lang="langnews_pwd_placeholder" name="Password" placeholder="Nhập mật khẩu"
+                                required="required" type="password" />
+                        </div>
+                        <!-- <button onclick="login()" class="button"><a href="../html/dashboard.html">Đăng nhập</a></button> -->
+                        <button onclick="login()" class="button">Đăng nhập</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../js/js/DangNhap.js"></script>
+</body>
+
+</html>
