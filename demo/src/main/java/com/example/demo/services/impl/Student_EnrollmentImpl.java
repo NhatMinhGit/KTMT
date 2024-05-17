@@ -6,6 +6,7 @@ import com.example.demo.repositories.*;
 import com.example.demo.services.CourseService;
 import com.example.demo.services.ScheduleService;
 import com.example.demo.services.Student_EnrollmentService;
+import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -143,7 +144,7 @@ public class Student_EnrollmentImpl implements Student_EnrollmentService {
                     }
                     if(!scheduleImpl.checkSchedule(enrollmentP.getScheduleStudy(),element2)){
                         schedule.set(enrollmentP.getScheduleStudy());
-                        System.out.println("3");
+
                         return;
                     }
                 });
@@ -156,13 +157,37 @@ public class Student_EnrollmentImpl implements Student_EnrollmentService {
 
             if(!scheduleImpl.checkSchedule(enrollmentPDky.getScheduleStudy(),enrollmentP.getScheduleStudy())){
                 schedule.set(enrollmentP.getScheduleStudy());
-                System.out.println("4");
+
                 return;
             }
 
         });
         return schedule.get();
     }
+    @Transactional
+    public String cancelEnrollment(Student_EnrollmentDTO studentEnrollmentDTO){
+
+        Student student = studentRepository.findById(studentEnrollmentDTO.getStudentID()).orElse(null);
+        InforStudent inforStudent = inforStudentRepository.findById(studentEnrollmentDTO.getStudentID());
+
+        if (student==null){
+            return "Không tìm thấy sinh viên";
+        }
+        Enrollment enrollment = enrollmentRepository.findEnrollmentByEnrollmentID(studentEnrollmentDTO.getEnrollmentID());
+        if (enrollment==null){
+            return "Không tìm thấy lớp học phần";
+        }
+
+        Student_Enrollment student_enrollment = student_enrollmentRepository.findStudent_EnrollmentByStudentStudentAndEnrollment(student,enrollment);
+
+        if (student_enrollment==null){
+            return "Không tìm thấy sinh viên trong lớp học phần";
+        }
+        student_enrollmentRepository.deleteByEnrollmentIdAndStudentId(enrollment.getEnrollmentID(),student.getId());
+        resultRepository.deleteResultByResultID(student.getId()+"-"+enrollment.getEnrollmentID());
+        return "Hủy đăng ký thành công";
+    }
+
 
 
 }
