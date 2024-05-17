@@ -21,12 +21,12 @@ public class Result {
     @ElementCollection
     @CollectionTable(name="regularScore", joinColumns = @JoinColumn(name="resultID"))
     @Column(name="regularScore", nullable = false)
-    private List<String> regularScore;
+    private List<Double> regularScore;
 
     @ElementCollection
     @CollectionTable(name="practiceScores", joinColumns = @JoinColumn(name="resultID"))
-    @Column(name="practiceScore", nullable = false)
-    private List<String> practiceScore;
+    @Column(name="practiceScore")
+    private List<Double> practiceScore;
 
     @Column(name = "midtermScore",columnDefinition = "float")
     private double midtermScore;
@@ -34,5 +34,11 @@ public class Result {
     private double finalScore;
     @Column(name = "overallScore",columnDefinition = "float")
     private double overallScore;
-
+    public void calculatorOverallScore(){
+        double sum = 0;
+        for (Double score: regularScore){
+            sum += score;
+        }
+        this.overallScore = sum*0.3+midtermScore*0.2 + finalScore*0.5;
+    }
 }

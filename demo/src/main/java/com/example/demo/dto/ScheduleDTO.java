@@ -8,9 +8,8 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ScheduleDTO {
+    private String isPractice;
     private String dayOfWeek;
-
     private int classesStart;
-
     private int classesEnd;
 }
