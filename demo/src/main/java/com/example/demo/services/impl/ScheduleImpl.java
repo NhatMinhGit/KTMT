@@ -3,6 +3,7 @@ package com.example.demo.services.impl;
 import com.example.demo.dto.ScheduleDTO;
 import com.example.demo.dto.ScheduleEnrollmentDTO;
 import com.example.demo.entities.Enrollment;
+import com.example.demo.entities.EnrollmentP;
 import com.example.demo.entities.Schedule;
 import com.example.demo.repositories.*;
 import com.example.demo.services.ScheduleService;
@@ -58,10 +59,13 @@ public class ScheduleImpl implements ScheduleService {
                 return modelMapper.map(schedule, ScheduleDTO.class);
             }).toList());
             if(!student_enrollment.getCodePractive().equals("")){
-              Schedule sPractice = enrollmentPRepository.findById(student_enrollment.getCodePractive()).orElse(null).getScheduleStudy();
+                EnrollmentP enrollmentP = enrollmentPRepository.findById(student_enrollment.getCodePractive()).orElse(null);
+              Schedule sPractice = enrollmentP.getScheduleStudy();
                 ScheduleDTO scheduleDTO = modelMapper.map(sPractice, ScheduleDTO.class);
                 scheduleDTO.setIsPractice("Practice");
+                scheduleDTO.setNameInstructor(enrollmentP.getInstructor().getName());
                 scheduleDTOS.add(scheduleDTO);
+
             }
             scheduleEnrollmentDTO.setSchedules(scheduleDTOS);
             return scheduleEnrollmentDTO;

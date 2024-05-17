@@ -35,4 +35,8 @@ public class EnrollmentController {
     public EnrollmentDTO getAllEnrollmentById(@RequestParam("enrollmentID") String enrollmentID){
         return enrollmentService.getAllEnrollmentById(enrollmentID);
     }
+    @PostMapping("/dangkyhocphan/lophocphan/sinhvien/huydangky")
+    public String cancelEnrollment(@RequestBody Student_EnrollmentDTO studentEnrollmentDTO) {
+        return student_enrollmentImpl.cancelEnrollment(studentEnrollmentDTO);
+    }
 }

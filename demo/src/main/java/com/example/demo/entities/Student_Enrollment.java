@@ -31,7 +31,7 @@ public class Student_Enrollment {
     @JoinColumn(name = "studentID")
     private InforStudent student;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "resultID", columnDefinition = "nvarchar(20)", nullable = false)
     private Result result;
 
