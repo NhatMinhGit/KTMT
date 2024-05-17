@@ -165,3 +165,11 @@
 tr.active {
     background-color: #feec9c;
 }
+
+.highlight {
+    background-color: yellow; /* Ví dụ về màu nền cho các dòng đã đánh dấu */
+}
+
+table tr td {
+    text-align: center;
+}

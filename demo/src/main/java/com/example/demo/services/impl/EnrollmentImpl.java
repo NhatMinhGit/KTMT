@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 @Service
@@ -49,6 +50,8 @@ public class EnrollmentImpl implements EnrollmentService {
                 Enrollment enrollment = enrollmentRepository.findEnrollmentByEnrollmentID(element.getEnrollment().getEnrollmentID());
 
                 EnrollmentDTO enrollmentDTO = modelMapper.map(enrollment, EnrollmentDTO.class);
+                enrollmentDTO.setCredit(enrollment.getCourse().getCredits());
+                enrollmentDTO.setNameCourse(enrollment.getCourse().getName());
                 enrollmentDTO.setCodePractice(element.getCodePractive());
                 enrollmentDTO.genPaymentDeadline();
                 enrollmentDTO.setFee(Caculator.caculatorFee(enrollment.getCourse().getCredits()));
@@ -64,7 +67,20 @@ public class EnrollmentImpl implements EnrollmentService {
     public EnrollmentDTO getAllEnrollmentById(String enrollmentID) {
         Enrollment enrollment = enrollmentRepository.findEnrollmentByEnrollmentID(enrollmentID);
         assert enrollment != null;
+        String nameInstructor = enrollment.getInstuctor().getName();
+
         EnrollmentDTO enrollmentDTO = modelMapper.map(enrollment, EnrollmentDTO.class);
+        enrollmentDTO.setNameInstuctor(nameInstructor);
+
+        List<String> nameInstutor = enrollment.getEnrollmentPs().stream().map((element)->{
+            return element.getInstructor().getName();
+        }).toList();
+
+        AtomicInteger flag = new AtomicInteger();
+        enrollmentDTO.getEnrollmentPs().forEach((element)->{
+            element.setNameInstructor(nameInstutor.get(flag.get()));
+            flag.getAndIncrement();
+        });
         return enrollmentDTO;
     }
 
